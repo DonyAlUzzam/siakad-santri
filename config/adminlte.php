@@ -234,11 +234,11 @@ return [
         ],
         
         ['header' => 'Menu'],
-        [
-            'text' => 'Semua Siswa',
-            'url'  => '/santri',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+        // [
+        //     'text' => 'Semua Siswa',
+        //     'url'  => '/santri',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
         [
             'text' => 'Data Siswa',
             'url'  => '#',
@@ -246,45 +246,45 @@ return [
             'submenu' => [
                 [
                     'text'    => 'MTS',
-                    'url'     => '#',
+                    'url'     => 'santri-mts',
                     'icon'  => 'fas fa-solid fa-school',
-                    'submenu' => [
-                        [
-                            'text' => 'Kelas I',
-                            'url'  => '/santri-mts-one',
-                        ],
-                        [
-                            'text'    => 'Kelas II',
-                            'url'     => '/santri-mts-two',
+                    // 'submenu' => [
+                    //     [
+                    //         'text' => 'Kelas I',
+                    //         'url'  => '/santri-mts-one',
+                    //     ],
+                    //     [
+                    //         'text'    => 'Kelas II',
+                    //         'url'     => '/santri-mts-two',
                             
-                        ],
-                        [
-                            'text'    => 'Kelas III',
-                            'url'     => '/santri-mts-three',
+                    //     ],
+                    //     [
+                    //         'text'    => 'Kelas III',
+                    //         'url'     => '/santri-mts-three',
                             
-                        ],
-                    ],
+                    //     ],
+                    // ],
                 ],
                 [
                     'text' => 'MA',
-                    'url'  => '#',
+                    'url'  => 'santri-ma',
                     'icon'  => 'fas fa-regular fa-school',
-                    'submenu' => [
-                        [
-                            'text' => 'Kelas I',
-                            'url'  => '/santri-ma-one',
-                        ],
-                        [
-                            'text'    => 'Kelas II',
-                            'url'     => '/santri-ma-two',
+                    // 'submenu' => [
+                    //     [
+                    //         'text' => 'Kelas I',
+                    //         'url'  => '/santri-ma-one',
+                    //     ],
+                    //     [
+                    //         'text'    => 'Kelas II',
+                    //         'url'     => '/santri-ma-two',
                             
-                        ],
-                        [
-                            'text'    => 'Kelas III',
-                            'url'     => '/santri-ma-three',
+                    //     ],
+                    //     [
+                    //         'text'    => 'Kelas III',
+                    //         'url'     => '/santri-ma-three',
                             
-                        ],
-                    ],
+                    //     ],
+                    // ],
                 ],
             ],
         ],
@@ -309,11 +309,23 @@ return [
         // ],
         [
             'text' => 'Pembayaran',
-            'url'  => '/transaksi',
+            'url'  => '#',
             'icon' => 'fas fa fa-credit-card',
+            'submenu' => [
+                [
+                    'text'    => 'MTS',
+                    'url'     => 'transaksi-mts',
+                    'icon'  => 'fas fa-solid fa-school',
+                ],
+                [
+                    'text' => 'MA',
+                    'url'  => 'transaksi-ma',
+                    'icon'  => 'fas fa-regular fa-school',
+                ],
+            ],
         ],
-       
     ],
+   
 
     /*
     |--------------------------------------------------------------------------

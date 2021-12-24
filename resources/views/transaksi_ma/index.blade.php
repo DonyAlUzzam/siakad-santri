@@ -3,7 +3,7 @@
 @section('title', 'List Pembayaran')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">List Pembayaran MTs</h1>
+    <h1 class="m-0 text-dark">List Pembayaran MA</h1>
 @stop
 
 @section('content')
@@ -94,7 +94,7 @@
 
 
 
-<script src="{{asset('js/transaksi.js')}}"></script>
+<script src="{{asset('js/transaksi_ma.js')}}"></script>
 
 
 @endpush

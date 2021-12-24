@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'List Pembayaran')
+@section('title', 'List Detail Pembayaran')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">List Pembayaran MTs</h1>
+    <h1 class="m-0 text-dark">List Detail Pembayaran MA</h1>
 @stop
 
 @section('content')
@@ -26,7 +26,7 @@
                                         <option value="2018/2019">2018/2019</option>
                                 </select>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 d-none">
                             <label>Pilih Kelas</label>
                                 <select name="kelas"
                                         id="kelas"
@@ -51,6 +51,7 @@
                             <th>Nim</th>
                             <th>Nama</th>
                             <th>Kelas</th>
+                            <th>Tanggal Pembayaran</th>
                             <th>Pembayaran 1</th>
                             <th>Pembayaran 2</th>
                             <th>Pembayaran 3</th>
@@ -63,6 +64,7 @@
                         <tfoot>
                                 <tr class="text-primary">
                                     <th colspan="3">Total Pembayaran : </th>
+                                    <th style="text-align: right;"></th>
                                     <th style="text-align: right;"></th>
                                     <th style="text-align: right;"></th>
                                     <th style="text-align: right;"></th>
@@ -94,7 +96,7 @@
 
 
 
-<script src="{{asset('js/transaksi.js')}}"></script>
+<script src="{{asset('js/detail_ma.js')}}"></script>
 
 
 @endpush

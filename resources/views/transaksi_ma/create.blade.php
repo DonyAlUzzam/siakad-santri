@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('transaksi-mts.store')}}" method="post">
+    <form action="{{route('transaksi-ma.store')}}" method="post">
         @csrf
     <div class="row">
         <div class="col-12">

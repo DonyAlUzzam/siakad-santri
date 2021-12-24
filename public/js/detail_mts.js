@@ -4,23 +4,29 @@ $(document).ready(function () {
     // }else{
         dataPembayaran_init()
         // loadTotal()
+       
+       
     // }
     $("#addTransaksi").append(`<a href="transaksi-mts/create" class="btn btn-primary mb-2">Tambah Pembayaran</a>`)
                     
 })
 
 var table;
+var url = window.location.href
+var id = url.split("/").pop()
+
 function dataPembayaran_init() {
 	table = $('#pembayaran').DataTable({
    
 	ajax : {
-	url : '/api/get-data-pembayaran',
+	url : '/api/get-detail-pembayaran/'+id,
 	method : 'post',
 	type : 'json',
 	data : {
 		_token : $('meta[name="csrf-token"]').attr('content'),
         tahun_ajaran : () => {return $("#tahun_ajaran").val() },   
         kelas : () => {return $("#kelas").val() },
+        // nim : () => {return id },
 	},
 	},
 	columns: [
@@ -35,11 +41,11 @@ function dataPembayaran_init() {
 		},
         {
             title : 'Nim Pembayar',
-            data : 'nim',
+            data : 'nim_bayar',
             width : '15%',
             className : 'align-middle',
             render : (data, type, row) => {
-                return '<a href="detail-pembayaran-mts/'+data+'">'+data+'</a>'
+                return data
             }
             },
 		{
@@ -60,6 +66,15 @@ function dataPembayaran_init() {
 			return data;
 		}
 		},
+        {
+            title : 'Tanggal Bayar',
+            data : 'tanggal_bayar',
+            width : '5%',
+            className : 'align-middle',
+            render : (data, type, row) => {
+                return data;
+            }
+            },
 		{
 		title : 'Pembayaran 1',
 		data : 'pembayaran_1',
@@ -124,21 +139,21 @@ function dataPembayaran_init() {
                     i : 0;
         };
         total_pembayaran_1 = api
-        .column( 4 )
-        .data()
-        .reduce( function (a, b) {
-            return intVal(a) + intVal(b);
-        }, 0 );
-        
-        total_pembayaran_2 = api
         .column( 5 )
         .data()
         .reduce( function (a, b) {
             return intVal(a) + intVal(b);
         }, 0 );
         
-        total_pembayaran_3 = api
+        total_pembayaran_2 = api
         .column( 6 )
+        .data()
+        .reduce( function (a, b) {
+            return intVal(a) + intVal(b);
+        }, 0 );
+        
+        total_pembayaran_3 = api
+        .column( 7 )
         .data()
         .reduce( function (a, b) {
             return intVal(a) + intVal(b);
@@ -158,9 +173,9 @@ function dataPembayaran_init() {
         };
 
         // Update footer
-        $( api.column( 4 ).footer() ).html(numeral(data_total.data[0].pembayaran_1).format('0,0'));
-        $( api.column( 5 ).footer() ).html(numeral(data_total.data[0].pembayaran_2).format('0,0'));
-        $( api.column( 6 ).footer() ).html(numeral(data_total.data[0].pembayaran_3).format('0,0'));
+        $( api.column( 5 ).footer() ).html(numeral(data_total.data[0].pembayaran_1).format('0,0'));
+        $( api.column( 6 ).footer() ).html(numeral(data_total.data[0].pembayaran_2).format('0,0'));
+        $( api.column( 7 ).footer() ).html(numeral(data_total.data[0].pembayaran_3).format('0,0'));
     },
 
 	});
@@ -234,7 +249,7 @@ function loadTotal() {
 
     var data;
     $.ajax({
-        url : '/api/rekap-total-pembayaran',
+        url : '/api/rekap-total-detail-pembayaran/'+id,
         method : 'POST',
         async : false,
         data : {

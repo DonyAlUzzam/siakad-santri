@@ -10,6 +10,6 @@ class SantriModel extends Model
     use HasFactory;
 
     protected $table = 'santri';
-    protected $primaryKey = 'nim';
-    protected $fillable = ['nim', 'fullname', 'tanggal_lahir', 'email', 'tempat_lahir', 'alamat', 'kelas'];
+    protected $primaryKey = 'id';
+    protected $fillable = ['image','nim', 'fullname','tahun_ajaran','status', 'tanggal_lahir', 'email', 'tempat_lahir', 'alamat', 'kelas'];
 }

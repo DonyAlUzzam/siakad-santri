@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('santri.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('siswa.store')}}" method="post" enctype="multipart/form-data">
         @csrf
     <div class="row">
         <div class="col-12">
@@ -60,12 +60,6 @@
                         <label for="exampleInputName">Tahun Ajaran</label>
                         <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" id="exampleInputName" placeholder="Tahun Ajaran" name="tahun_ajaran" value="{{old('tahun_ajaran')}}">
                         @error('tahun_ajaran') <span class="text-danger">{{$message}}</span> @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputName">Status</label>
-                        <input type="text" class="form-control @error('status') is-invalid @enderror" id="exampleInputName" placeholder="Status" name="status" value="{{old('status')}}">
-                        @error('status') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">

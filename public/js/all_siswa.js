@@ -28,11 +28,21 @@ function dataSiswaAll_init() {
 			return meta.row + 1;
 		}
 		},
+		{
+            title : 'Foto',
+            data : 'image',
+            width : '15%',
+            className : 'text-center align-middle',
+            render : (data, type, row) => {
+				return "<img src='storage/Image/"+data+"' width='100' heigh='100'/>";
+
+            }
+            },
         {
             title : 'Nim',
             data : 'nim',
             width : '15%',
-            className : 'align-middle',
+            className : 'text-center align-middle',
             render : (data, type, row) => {
                 return data;
             }
@@ -41,7 +51,7 @@ function dataSiswaAll_init() {
 		title : 'Nama Lengkap',
 		data : 'fullname',
 		width : '15%',
-		className : 'align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}
@@ -50,7 +60,7 @@ function dataSiswaAll_init() {
 		title : 'Email',
 		data : 'email',
 		width : '10%',
-		className : 'text-right align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}
@@ -58,8 +68,8 @@ function dataSiswaAll_init() {
         {
             title : 'Kelas',
             data : 'kelas',
-            width : '10%',
-            className : 'text-right align-middle',
+            width : '5%',
+            className : 'text-center align-middle',
             render : (data, type, row) => {
                 return data;
             },
@@ -68,7 +78,7 @@ function dataSiswaAll_init() {
 		title : 'Tempat Lahir',
 		data : 'tempat_lahir',
 		width : '15%',
-		className : 'text-right align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
             return data
         }
@@ -76,8 +86,8 @@ function dataSiswaAll_init() {
 		{
 		title : 'Tanggal Lahir',
 		data : 'tanggal_lahir',
-		width : '15%',
-		className : 'text-right align-middle',
+		width : '10%',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}
@@ -85,8 +95,8 @@ function dataSiswaAll_init() {
 		{
 		title : 'Alamat',
 		data : 'alamat',
-		width : '15%',
-		className : 'text-right align-middle',
+		width : '25%',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}

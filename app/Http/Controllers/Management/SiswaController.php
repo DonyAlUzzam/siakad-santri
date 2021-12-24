@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SiswaModel;
 use DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class SiswaController extends Controller
 {
@@ -31,7 +33,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('santri.create');
+        return view('siswa.create');
     }
 
     /**
@@ -45,17 +47,45 @@ class SiswaController extends Controller
         $request->validate([
             'nim' => 'required',
             'fullname' => 'required',
+            'tahun_ajaran' => 'required',
             // 'email' => 'required|email|unique:users,email',
             'alamat' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'kelas' => 'required'
         ]);
-        $array = $request->only([
-            'nim', 'fullname', 'email', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'kelas'
-        ]);
+        // $array = $request->only([
+        //     'nim', 'fullname', 'email', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'kelas'
+        // ]);
+
+        $data = [
+            "nim" => $request->get('nim'),
+            "fullname" => $request->get('fullname'),
+            "email" => $request->get('email'),
+            "alamat" => $request->get('alamat'),
+            "tempat_lahir" => $request->get('tempat_lahir'),
+            "tanggal_lahir" => $request->get('tanggal_lahir'),
+            "kelas" => $request->get('kelas'),
+            "tahun_ajaran" => $request->get('tahun_ajaran'),
+            "status" => $request->get('status'),
+            // "image" => $request->image->hashName()
+        ];
+
+        if ($request->hasFile('image')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png, jpg' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // $request->file('image')->move(public_path('images'), $filename);
+
+            $request->image->store('Image', 'public');
+
+            $data["image"] = $request->image->hashName();
+
+        }
         // $array['password'] = bcrypt($array['password']);
-        $user = SiswaModel::create($array);
+        $user = SiswaModel::create($data);
         return redirect()->back()
             ->with('success_message', 'Berhasil menambah user baru');
     }
@@ -81,8 +111,8 @@ class SiswaController extends Controller
     {
         $user = SiswaModel::find($id);
         if (!$user) return redirect()->back()
-            ->with('error_message', 'User dengan id'.$id.' tidak ditemukan');
-        return view('santri.edit', [
+            ->with('error_message', 'Siswa dengan id'.$id.' tidak ditemukan');
+        return view('siswa.edit', [
             'user' => $user
         ]);
     }
@@ -98,7 +128,7 @@ class SiswaController extends Controller
     {
         // dd($request);
         $request->validate([
-            // 'nim' => 'required',
+            'nim' => 'required',
             'fullname' => 'required',
             // 'email' => 'required|email|unique:users,email',
             'alamat' => 'required',
@@ -114,6 +144,23 @@ class SiswaController extends Controller
         $user->tanggal_lahir = $request->tanggal_lahir;
         $user->alamat = $request->alamat;
         $user->kelas = $request->kelas;
+        $user->image = $user->image;
+
+        if ($request->hasFile('image')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png, jpg' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // $request->file('image')->move(public_path('images'), $filename);
+            // Storage::delete('storage/app/public/Image'.$user->image);
+            // File::delete($user->image);
+            Storage::disk('public')->delete('Image/'.$user->image);
+            $request->image->store('Image', 'public');
+
+            $user->image = $request->image->hashName();
+        }
+
         // if ($request->password) $user->password = bcrypt($request->password);
         // dd($user);
         $user->save();
@@ -146,34 +193,27 @@ class SiswaController extends Controller
     }
 
     public function getDataSiswa(Request $request){
+        $kelas = $request->kelas;
+        $tahun_ajaran= $request->tahun_ajaran;
 
-        if ($request->data == 'santri-mts-one') {
-            $query = "select * from santri where kelas = 'I' ";
-        }else if ($request->data == 'santri-mts-two'){
-            $query = "select * from santri where kelas = 'II' ";
-        }else if ($request->data == 'santri-mts-three'){
-            $query = "select * from santri where kelas = 'III' ";
-        }else if ($request->data == 'santri-ma-one'){
-            $query = "select * from santri_ma where kelas = 'I' ";
-        }else if ($request->data == 'santri-ma-two'){
-            $query = "select * from santri_ma where kelas = 'II' ";
-        }else if ($request->data == 'santri-ma-three'){
-            $query = "select * from santri_ma where kelas = 'III' ";
+        $sWhere = "";
+
+        if($kelas != 'all'){
+            $sWhere .= " and kelas = '".$kelas."' ";
         }
 
-        // dd($query);
+        if($tahun_ajaran != 'all'){
+            $sWhere .= " and tahun_ajaran = '".$tahun_ajaran."' ";
+        }
 
+        $query = "select * from santri_ma where 1=1 ".$sWhere;
         $data = DB::select(
             DB::raw($query)
         );
 
-        // dd($data);
-
         $array=[
             "data"=>$data,
             ];
-
-        return response()->json($array);
-        
+        return response()->json($array);	
     }
 }

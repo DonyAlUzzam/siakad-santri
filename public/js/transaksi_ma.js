@@ -5,16 +5,16 @@ $(document).ready(function () {
         dataPembayaran_init()
         // loadTotal()
     // }
-    $("#addTransaksi").append(`<a href="transaksi-mts/create" class="btn btn-primary mb-2">Tambah Pembayaran</a>`)
+    $("#addTransaksi").append(`<a href="transaksi-ma/create" class="btn btn-primary mb-2">Tambah Pembayaran</a>`)
                     
 })
 
-var table;
+
 function dataPembayaran_init() {
 	table = $('#pembayaran').DataTable({
    
 	ajax : {
-	url : '/api/get-data-pembayaran',
+	url : '/api/get-data-pembayaran-ma',
 	method : 'post',
 	type : 'json',
 	data : {
@@ -39,7 +39,7 @@ function dataPembayaran_init() {
             width : '15%',
             className : 'align-middle',
             render : (data, type, row) => {
-                return '<a href="detail-pembayaran-mts/'+data+'">'+data+'</a>'
+                return '<a href="detail-pembayaran-ma/'+data+'">'+data+'</a>'
             }
             },
 		{
@@ -50,16 +50,16 @@ function dataPembayaran_init() {
 		render : (data, type, row) => {
 			return data;
 		}
-        },
-        {
-        title : 'Kelas',
-		data : 'kelas',
-		width : '5%',
-		className : 'align-middle',
-		render : (data, type, row) => {
-			return data;
-		}
 		},
+        {
+            title : 'Kelas',
+            data : 'kelas',
+            width : '5%',
+            className : 'align-middle',
+            render : (data, type, row) => {
+                return data;
+            }
+            },
 		{
 		title : 'Pembayaran 1',
 		data : 'pembayaran_1',
@@ -234,7 +234,7 @@ function loadTotal() {
 
     var data;
     $.ajax({
-        url : '/api/rekap-total-pembayaran',
+        url : '/api/rekap-total-pembayaran-ma',
         method : 'POST',
         async : false,
         data : {

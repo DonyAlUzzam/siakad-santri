@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('transaksi.update', $user)}}" method="post">
+    <form action="{{route('transaksi-ma.update', $user)}}" method="post">
     @method('PUT')
         @csrf
     <div class="row">

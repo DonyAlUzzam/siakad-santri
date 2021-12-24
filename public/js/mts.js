@@ -3,15 +3,10 @@ $(document).ready(function () {
     //     // dataSiswaAll_init()
     // }else{
         dataSiswa_init()
-    // }
-    let url = window.location.pathname
-    let sekolah = url.split('-')
 
-    if(sekolah[1] == "mts"){
-        $("#addSiswa").append(`<a href="santri/create" class="btn btn-primary mb-2">Tambah Siswa</a>`)
-    }else{
-        $("#addSiswa").append(`<a href="siswa/create" class="btn btn-primary mb-2">Tambah Siswa</a>`)
-    }
+        $("#title").append("List Siswa "+$("#tahun_ajaran").val())
+    // }
+  
 })
 
 
@@ -19,12 +14,13 @@ function dataSiswa_init() {
 	table = $('#siswa').DataTable({
    
 	ajax : {
-	url : '/api/get-data-siswa',
+	url : '/api/get-data-siswa-mts',
 	method : 'post',
 	type : 'json',
 	data : {
 		_token : $('meta[name="csrf-token"]').attr('content'),
-    data : () => {return location.pathname.replace('/','') },
+        tahun_ajaran : () => {return $("#tahun_ajaran").val() },
+        kelas : () => {return $("#kelas").val() },
 	},
 	},
 	columns: [
@@ -38,10 +34,19 @@ function dataSiswa_init() {
 		}
 		},
         {
+            title : 'Foto',
+            data : 'image',
+            width : '15%',
+            className : 'text-center align-middle',
+            render : (data, type, row) => {
+                return "<img src='storage/Image/"+data+"' width='100' heigh='100'/>";
+            }
+            },
+        {
             title : 'Nim',
             data : 'nim',
             width : '15%',
-            className : 'align-middle',
+            className : 'text-center align-middle',
             render : (data, type, row) => {
                 return data;
             }
@@ -50,7 +55,7 @@ function dataSiswa_init() {
 		title : 'Nama Lengkap',
 		data : 'fullname',
 		width : '15%',
-		className : 'align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}
@@ -59,7 +64,7 @@ function dataSiswa_init() {
 		title : 'Email',
 		data : 'email',
 		width : '10%',
-		className : 'text-right align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		},
@@ -68,7 +73,7 @@ function dataSiswa_init() {
 		title : 'Tempat Lahir',
 		data : 'tempat_lahir',
 		width : '15%',
-		className : 'text-right align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
             return data
         }
@@ -77,7 +82,7 @@ function dataSiswa_init() {
 		title : 'Tanggal Lahir',
 		data : 'tanggal_lahir',
 		width : '15%',
-		className : 'text-right align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}
@@ -86,24 +91,30 @@ function dataSiswa_init() {
 		title : 'Alamat',
 		data : 'alamat',
 		width : '15%',
-		className : 'text-right align-middle',
+		className : 'text-center align-middle',
 		render : (data, type, row) => {
 			return data;
 		}
 		},
         {
-            data: 'nim',
+            data: 'id',
+            title: 'Opsi',
+            className : 'text-center align-middle',
             "mRender": function (data, type, row) {
-                let url = window.location.pathname
-                let sekolah = url.split('-')
 
-                if(sekolah[1] == "mts"){
-                    return '<button  class="btn btn-sm btn-primary" title="Edit"><a style="color:white !important" href="santri/'+data+'/edit">Edit</a></button>'
+                return '<button  class="btn btn-sm btn-primary" title="Edit"><a style="color:white !important" href="santri/'+data+'/edit">Edit</a></button>'
                     +'&nbsp; <button  class="btn btn-sm btn-danger"  title="Delete"><a style="color:white !important" href="santri/'+data+'" onclick="notificationBeforeDelete(event, this)">Delete</a></button>';
-                }else{
-                    return '<button  class="btn btn-sm btn-primary" title="Edit"><a style="color:white !important" href="siswa/'+data+'/edit">Edit</a></button>'
-                    +'&nbsp; <button  class="btn btn-sm btn-danger"  title="Delete"><a style="color:white !important" href="siswa/'+data+'" onclick="notificationBeforeDelete(event, this)">Delete</a></button>';
-                }
+
+                // let url = window.location.pathname
+                // let sekolah = url.split('-')
+
+                // if(sekolah[1] == "mts"){
+                //     return '<button  class="btn btn-sm btn-primary" title="Edit"><a style="color:white !important" href="santri/'+data+'/edit">Edit</a></button>'
+                //     +'&nbsp; <button  class="btn btn-sm btn-danger"  title="Delete"><a style="color:white !important" href="santri/'+data+'" onclick="notificationBeforeDelete(event, this)">Delete</a></button>';
+                // }else{
+                //     return '<button  class="btn btn-sm btn-primary" title="Edit"><a style="color:white !important" href="siswa/'+data+'/edit">Edit</a></button>'
+                //     +'&nbsp; <button  class="btn btn-sm btn-danger"  title="Delete"><a style="color:white !important" href="siswa/'+data+'" onclick="notificationBeforeDelete(event, this)">Delete</a></button>';
+                // }
                
             }
         }
@@ -131,37 +142,17 @@ function dataSiswa_init() {
     });
 }
 
+function updateTahunAjaran(){
+        table.ajax.reload()
+        // loadTotal()
+        $("#title").html(null)
+        $("#title").append("List Siswa Tahun Ajaran "+$("#tahun_ajaran").val())
+}
 
-
-
-
-// var xhr_stk;
-// function dataSiswa_inits() {
-// 	if (xhr_stk!=undefined && xhr_stk!=null) {
-// 		xhr_stk.abort();
-// 	}
-// 	xhr_stk = $.ajax({
-// 		url : window.location.origin + '/api/get-data-siswa',
-// 		method : 'GET',
-// 		dataType : 'json',
-// 		data : {
-// 			_token : $('meta[name="csrf_token"]').attr('content'),
-// 			// product : () => {return $('select[name="filterProduct-3"]').val() },
-// 		},
-// 		async : true,
-// 		success : function (res) {
-//             console.log(res, 'res')
-
-//             // let data = JSON.parse(res)
-
-//             // console.log(data,'da')
-// 			// table_summary_transaksi_kendaraan.clear().draw();
-// 			// table_summary_transaksi_kendaraan.rows.add(res);
-// 			// table_summary_transaksi_kendaraan.columns.adjust().draw();
-// 		}
-// 	});
-// }
-
+function updateKelas(){
+    table.ajax.reload()
+    // loadTotal()
+}
 
 function notificationBeforeDelete(event, el) {
     event.preventDefault();

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('santri.update', $user)}}" method="post">
+    <form action="{{route('santri.update', $user)}}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
     <div class="row">
@@ -57,6 +57,19 @@
                         @error('kelas') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="exampleInputName">Tahun Ajaran</label>
+                        <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" id="exampleInputName" placeholder="Tahun Ajaran" name="tahun_ajaran" value="{{$user->tahun_ajaran ?? old('tahun_ajaran')}}">
+                        @error('tahun_ajaran') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Foto</label>
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="exampleInputName" placeholder="Image" name="image" value="{{old('image')}}">
+                        @error('image') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+
                     <!-- <div class="form-group">
                         <label for="exampleInputPassword">Password</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword" placeholder="Password" name="password">
@@ -78,4 +91,8 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('footer')
+@include('layouts.footer')
 @stop
