@@ -16,7 +16,7 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <label for="exampleInputName">Nim</label>
+                        <label for="exampleInputName">Nisn</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputName" placeholder="Nim" name="nim" value="{{$user->nim ?? old('nim')}}">
                         @error('nim') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
@@ -27,7 +27,7 @@
                         @error('fullname') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="exampleInputEmail">Email address</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail" placeholder="Masukkan Email" name="email" value="{{$user->email ?? old('email')}}">
                         @error('email') <span class="text-danger">{{$message}}</span> @enderror
@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputName">Tahun Ajaran</label>
-                        <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" id="exampleInputName" placeholder="Tahun Ajaran" name="tahun_ajaran" value="{{old('tahun_ajaran')}}">
+                        <input type="text" class="form-control @error('tahun_ajaran') is-invalid @enderror" id="exampleInputName" placeholder="Tahun Ajaran" name="tahun_ajaran" value="{{$user->tahun_ajaran ?? old('tahun_ajaran')}}">
                         @error('tahun_ajaran') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
@@ -85,7 +85,7 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="javascript:history.go(-1)" class="btn btn-default">
-                        Batal
+                        Kembali
                     </a>
                 </div>
             </div>

@@ -33,9 +33,9 @@
                                         onchange="updateKelas(this);"
                                         class="form-control form-control-sm col-lg-4 col-sm-12">
                                         <option value="all">All</option>
-                                        <option value="1">Kelas 1</option>
-                                        <option value="2">Kelas 2</option>
-                                        <option value="3">Kelas 3</option>
+                                        <option value="1">Kelas 10</option>
+                                        <option value="2">Kelas 11</option>
+                                        <option value="3">Kelas 12</option>
                                 </select>
                         </div>
                     </div>
@@ -48,14 +48,17 @@
                         <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nim</th>
+                            <th>Nisn</th>
                             <th>Nama</th>
                             <th>Kelas</th>
                             <th>Tanggal Pembayaran</th>
-                            <th>Pembayaran 1</th>
-                            <th>Pembayaran 2</th>
-                            <th>Pembayaran 3</th>
-
+                            <th>SPP</th>
+                            <th>Kitab</th>
+                            <th>LKS</th>
+                            <th>Daftar Ulang</th>
+                            <th>Raport</th>
+                            <th>Uas Ganjil</th>
+                            <th>Uas Genap</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -64,6 +67,10 @@
                         <tfoot>
                                 <tr class="text-primary">
                                     <th colspan="3">Total Pembayaran : </th>
+                                    <th style="text-align: right;"></th>
+                                    <th style="text-align: right;"></th>
+                                    <th style="text-align: right;"></th>
+                                    <th style="text-align: right;"></th>
                                     <th style="text-align: right;"></th>
                                     <th style="text-align: right;"></th>
                                     <th style="text-align: right;"></th>

@@ -7,7 +7,7 @@ $(document).ready(function () {
        
        
     // }
-    $("#addTransaksi").append(`<a href="transaksi-mts/create" class="btn btn-primary mb-2">Tambah Pembayaran</a>`)
+    // $("#addTransaksi").append(`<a href="transaksi-mts/create" class="btn btn-primary mb-2">Tambah Pembayaran</a>`)
                     
 })
 
@@ -40,7 +40,7 @@ function dataPembayaran_init() {
 		}
 		},
         {
-            title : 'Nim Pembayar',
+            title : 'Nisn Pembayar',
             data : 'nim_bayar',
             width : '15%',
             className : 'align-middle',
@@ -76,7 +76,7 @@ function dataPembayaran_init() {
             }
             },
 		{
-		title : 'Pembayaran 1',
+		title : 'SPP',
 		data : 'pembayaran_1',
 		width : '10%',
 		className : 'text-right align-middle',
@@ -85,7 +85,7 @@ function dataPembayaran_init() {
 		},
 		},
 		{
-		title : 'Pembayaran 2',
+		title : 'Kitab',
 		data : 'pembayaran_2',
 		width : '15%',
 		className : 'text-right align-middle',
@@ -94,7 +94,7 @@ function dataPembayaran_init() {
         }
 		},
 		{
-        title : 'Pembayaran 3',
+        title : 'LKS',
         data : 'pembayaran_3',
         width : '15%',
         className : 'text-right align-middle',
@@ -102,6 +102,42 @@ function dataPembayaran_init() {
             return numeral(data).format('0,0');
 		}
 		},
+        {
+            title : 'Daftar Ulang',
+            data : 'daftar_ulang',
+            width : '15%',
+            className : 'text-right align-middle',
+            render : (data, type, row) => {
+                return numeral(data).format('0,0');
+        }
+        },
+        {
+            title : 'Raport',
+            data : 'raport',
+            width : '15%',
+            className : 'text-right align-middle',
+            render : (data, type, row) => {
+                return numeral(data).format('0,0');
+        }
+        },
+        {
+            title : 'Uas Ganjil',
+            data : 'uas_ganjil',
+            width : '15%',
+            className : 'text-right align-middle',
+            render : (data, type, row) => {
+                return numeral(data).format('0,0');
+        }
+        },
+        {
+            title : 'Uas Genap',
+            data : 'uas_genap',
+            width : '15%',
+            className : 'text-right align-middle',
+            render : (data, type, row) => {
+                return numeral(data).format('0,0');
+        }
+        },
         // {
         //     data: 'nim',
         //     width : '5%',
@@ -176,6 +212,11 @@ function dataPembayaran_init() {
         $( api.column( 5 ).footer() ).html(numeral(data_total.data[0].pembayaran_1).format('0,0'));
         $( api.column( 6 ).footer() ).html(numeral(data_total.data[0].pembayaran_2).format('0,0'));
         $( api.column( 7 ).footer() ).html(numeral(data_total.data[0].pembayaran_3).format('0,0'));
+        $( api.column( 8 ).footer() ).html(numeral(data_total.data[0].pembayaran_1).format('0,0'));
+        $( api.column( 9 ).footer() ).html(numeral(data_total.data[0].pembayaran_2).format('0,0'));
+        $( api.column( 10 ).footer() ).html(numeral(data_total.data[0].pembayaran_3).format('0,0'));
+        $( api.column( 11 ).footer() ).html(numeral(data_total.data[0].pembayaran_3).format('0,0'));
+
     },
 
 	});

@@ -3,7 +3,7 @@
 @section('title', 'Tambah Siswa')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Tambah Siswa</h1>
+    <h1 class="m-0 text-dark">Tambah Siswa SMPS</h1>
 @stop
 
 @section('content')
@@ -15,8 +15,8 @@
                 <div class="card-body">
 
                 <div class="form-group">
-                        <label for="exampleInputName">Nim</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputName" placeholder="Nim" name="nim" value="{{$user->nim ?? old('nim')}}">
+                        <label for="exampleInputName">Nisn</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputName" placeholder="Nisn" name="nim" value="{{$user->nim ?? old('nim')}}">
                         @error('nim') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
@@ -26,7 +26,7 @@
                         @error('fullname') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label for="exampleInputEmail">Email address</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail" placeholder="Masukkan Email" name="email" value="{{old('email')}}">
                         @error('email') <span class="text-danger">{{$message}}</span> @enderror
@@ -79,7 +79,7 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="javascript:history.go(-1)" class="btn btn-default">
-                        Batal
+                        Kembali
                     </a>
                 </div>
             </div>

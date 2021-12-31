@@ -245,7 +245,7 @@ return [
             'icon'  => 'fa fa-users',
             'submenu' => [
                 [
-                    'text'    => 'MTS',
+                    'text'    => 'SMPS',
                     'url'     => 'santri-mts',
                     'icon'  => 'fas fa-solid fa-school',
                     // 'submenu' => [
@@ -266,7 +266,7 @@ return [
                     // ],
                 ],
                 [
-                    'text' => 'MA',
+                    'text' => 'SMAS',
                     'url'  => 'santri-ma',
                     'icon'  => 'fas fa-regular fa-school',
                     // 'submenu' => [
@@ -313,12 +313,12 @@ return [
             'icon' => 'fas fa fa-credit-card',
             'submenu' => [
                 [
-                    'text'    => 'MTS',
+                    'text'    => 'SMPS',
                     'url'     => 'transaksi-mts',
                     'icon'  => 'fas fa-solid fa-school',
                 ],
                 [
-                    'text' => 'MA',
+                    'text' => 'SMAS',
                     'url'  => 'transaksi-ma',
                     'icon'  => 'fas fa-regular fa-school',
                 ],

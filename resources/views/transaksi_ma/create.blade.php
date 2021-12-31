@@ -3,7 +3,7 @@
 @section('title', 'Tambah Pembayaran')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Tambah Pembayaran</h1>
+    <h1 class="m-0 text-dark">Tambah Pembayaran SMAS</h1>
 @stop
 
 @section('content')
@@ -15,8 +15,8 @@
                 <div class="card-body">
 
                 <div class="form-group">
-                        <label for="exampleInputName">Nim</label>
-                        <input type="text" class="form-control @error('nim_bayar') is-invalid @enderror" id="exampleInputName" placeholder="Nim" name="nim_bayar" value="{{old('nim_bayar')}}">
+                        <label for="exampleInputName">Nisn</label>
+                        <input type="text" class="form-control @error('nim_bayar') is-invalid @enderror" id="exampleInputName" placeholder="Nisn" name="nim_bayar" value="{{old('nim_bayar')}}">
                         @error('nim_bayar') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
@@ -29,22 +29,52 @@
 
 
                     <div class="form-group">
-                        <label for="exampleInputEmail">Pembayaran 1</label>
-                        <input type="number" class="form-control @error('pembayaran_1') is-invalid @enderror" id="exampleInputEmail" placeholder="Pembayaran 1" name="pembayaran_1" value="{{old('pembayaran_1')}}">
+                        <label for="exampleInputEmail">SPP</label>
+                        <input type="number" class="form-control @error('pembayaran_1') is-invalid @enderror" id="exampleInputEmail" placeholder="SPP" name="pembayaran_1" value="{{old('pembayaran_1')}}">
                         @error('pembayaran_1') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputName">Pembayaran 2</label>
-                        <input type="number" class="form-control @error('pembayaran_2') is-invalid @enderror" id="exampleInputName" placeholder="Pembayaran 2" name="pembayaran_2" value="{{old('pembayaran_2')}}">
+                        <label for="exampleInputName">Kitab</label>
+                        <input type="number" class="form-control @error('pembayaran_2') is-invalid @enderror" id="exampleInputName" placeholder="Kitab" name="pembayaran_2" value="{{old('pembayaran_2')}}">
                         @error('pembayaran_2') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
 
                     <div class="form-group">
-                        <label for="exampleInputName">Pembayaran 3</label>
-                        <input type="number" class="form-control @error('pembayaran_3') is-invalid @enderror" id="exampleInputName" placeholder="Pembayaran 3" name="pembayaran_3" value="{{old('pembayaran_3')}}">
+                        <label for="exampleInputName">LKS</label>
+                        <input type="number" class="form-control @error('pembayaran_3') is-invalid @enderror" id="exampleInputName" placeholder="LKS" name="pembayaran_3" value="{{old('pembayaran_3')}}">
                         @error('pembayaran_3') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Daftar Ulang</label>
+                        <input type="number" class="form-control @error('daftar_ulang') is-invalid @enderror" id="exampleInputName" placeholder="Daftar Ulang" name="daftar_ulang" value="{{old('daftar_ulang')}}">
+                        @error('daftar_ulang') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Raport</label>
+                        <input type="number" class="form-control @error('raport') is-invalid @enderror" id="exampleInputName" placeholder="Raport" name="raport" value="{{old('raport')}}">
+                        @error('raport') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Uas Ganjil</label>
+                        <input type="number" class="form-control @error('raport') is-invalid @enderror" id="exampleInputName" placeholder="Uas Ganjil" name="uas_ganjil" value="{{old('uas_ganjil')}}">
+                        @error('uas_ganjil') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Uas Genap</label>
+                        <input type="number" class="form-control @error('raport') is-invalid @enderror" id="exampleInputName" placeholder="Uas Genap" name="uas_genap" value="{{old('uas_genap')}}">
+                        @error('uas_genap') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">Lain-Lain</label>
+                        <input type="number" class="form-control @error('lain_lain') is-invalid @enderror" id="exampleInputName" placeholder="Lain-Lain" name="lain_lain" value="{{old('lain_lain')}}">
+                        @error('lain_lain') <span class="text-danger">{{$message}}</span> @enderror
                     </div>
 
 

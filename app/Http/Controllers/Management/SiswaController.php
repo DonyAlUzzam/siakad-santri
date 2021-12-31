@@ -52,7 +52,8 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'kelas' => 'required'
+            'kelas' => 'required',
+            'tahun_ajaran' => 'required'
         ]);
         // $array = $request->only([
         //     'nim', 'fullname', 'email', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'kelas'
@@ -134,7 +135,8 @@ class SiswaController extends Controller
             'alamat' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'kelas' => 'required'
+            'kelas' => 'required',
+            'tahun_ajaran' => 'required'
         ]);
         $user = SiswaModel::find($id);
         $user->nim = $request->nim;
@@ -145,6 +147,7 @@ class SiswaController extends Controller
         $user->alamat = $request->alamat;
         $user->kelas = $request->kelas;
         $user->image = $user->image;
+        $user->tahun_ajaran = $request->tahun_ajaran;
 
         if ($request->hasFile('image')) {
 

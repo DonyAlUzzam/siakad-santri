@@ -43,7 +43,7 @@ function dataSiswa_init() {
             }
             },
         {
-            title : 'Nim',
+            title : 'Nisn',
             data : 'nim',
             width : '15%',
             className : 'text-center align-middle',
@@ -64,7 +64,7 @@ function dataSiswa_init() {
 		title : 'Email',
 		data : 'email',
 		width : '10%',
-		className : 'text-center align-middle',
+		className : 'text-center align-middle d-none',
 		render : (data, type, row) => {
 			return data;
 		},

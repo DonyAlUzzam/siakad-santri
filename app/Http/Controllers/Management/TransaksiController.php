@@ -54,7 +54,8 @@ class TransaksiController extends Controller
             // 'pembayaran_3' => 'required',
         ]);
         $array = $request->only([
-            'nim_bayar', 'periode','tahun_ajaran', 'tanggal_bayar', 'pembayaran_1', 'pembayaran_2', 'pembayaran_3', 'kelas', 'tanggal_bayar'
+            'nim_bayar', 'periode','tahun_ajaran', 'tanggal_bayar', 'pembayaran_1', 'pembayaran_2', 'pembayaran_3', 'kelas', 'tanggal_bayar',
+            'daftar_ulang', 'raport', 'uas_ganjil', 'uas_genap', 'lain_lain'
         ]);
         // $array['password'] = bcrypt($array['password']);
         $trx = TransaksiModel::create($array);
@@ -148,10 +149,15 @@ class TransaksiController extends Controller
         }
 
 
-        $query ="select nim,kelas,fullname, b.* from santri a left join 
-        (select nim_bayar, sum(pembayaran_1) pembayaran_1, sum(pembayaran_2) pembayaran_2, sum(pembayaran_3) pembayaran_3 from pembayaran
+        $query ="select nim,fullname, b.* from santri a left join 
+        (select nim_bayar,kelas, sum(pembayaran_1) pembayaran_1, sum(pembayaran_2) pembayaran_2, sum(pembayaran_3) pembayaran_3,
+        sum(daftar_ulang) daftar_ulang,
+		sum(raport) raport,
+		sum(uas_ganjil) uas_ganjil,
+		sum(uas_genap) uas_genap,
+		sum(lain_lain) lain_lain from pembayaran
         where 1=1 ".$sWhere." 
-        group by nim_bayar ) b on a.nim = b.nim_bayar where 1=1 ".$sWhere ;
+        group by nim_bayar,tahun_ajaran,kelas ) b on a.nim = b.nim_bayar where 1=1 ".$sWhere ;
         // dd($query);
 
         $data = DB::select(
@@ -222,9 +228,19 @@ class TransaksiController extends Controller
             $sWhere .= " and tahun_ajaran = '".$tahun_ajaran."' ";
         }
 
-        $query ="select sum(x.pembayaran_1) as pembayaran_1, sum(x.pembayaran_2) as pembayaran_2, sum(x.pembayaran_3) as pembayaran_3 from (
+        $query ="select sum(x.pembayaran_1) as pembayaran_1, sum(x.pembayaran_2) as pembayaran_2, sum(x.pembayaran_3) as pembayaran_3,
+            sum(daftar_ulang) daftar_ulang,
+            sum(raport) raport,
+            sum(uas_ganjil) uas_ganjil,
+            sum(uas_genap) uas_genap,
+            sum(lain_lain) lain_lain from (
             select nim, b.* from santri a left join 
-            (select nim_bayar, periode, sum(pembayaran_1) pembayaran_1, sum(pembayaran_2) pembayaran_2, sum(pembayaran_3) pembayaran_3 from pembayaran 
+            (select nim_bayar, periode, sum(pembayaran_1) pembayaran_1, sum(pembayaran_2) pembayaran_2, sum(pembayaran_3) pembayaran_3,
+            sum(daftar_ulang) daftar_ulang,
+            sum(raport) raport,
+            sum(uas_ganjil) uas_ganjil,
+            sum(uas_genap) uas_genap,
+            sum(lain_lain) lain_lain from pembayaran 
             where 1=1 ".$sWhere."
             group by nim_bayar, periode ) b on a.nim = b.nim_bayar)x";
         // dd($query);

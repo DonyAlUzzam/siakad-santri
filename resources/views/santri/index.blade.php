@@ -33,9 +33,9 @@
                                         onchange="updateKelas(this);"
                                         class="form-control form-control-sm col-lg-4 col-sm-12">
                                         <option value="all">All</option>
-                                        <option value="1">Kelas 1</option>
-                                        <option value="2">Kelas 2</option>
-                                        <option value="3">Kelas 3</option>
+                                        <option value="7">Kelas 7</option>
+                                        <option value="8">Kelas 8</option>
+                                        <option value="9">Kelas 9</option>
                                 </select>
                         </div>
                     </div>
