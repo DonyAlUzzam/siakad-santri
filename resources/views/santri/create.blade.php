@@ -63,6 +63,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="exampleInputName">Wali Siswa</label>
+                        <input type="text" class="form-control @error('wali_siswa') is-invalid @enderror" id="exampleInputName" placeholder="Wali Siswa" name="wali_siswa" value="{{old('wali_siswa')}}">
+                        @error('wali_siswa') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">No Hp</label>
+                        <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="exampleInputName" placeholder="No Hp" name="no_hp" value="{{old('no_hp')}}">
+                        @error('no_hp') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group d-none">
                         <label for="exampleInputName">Status</label>
                         <input type="text" class="form-control @error('status') is-invalid @enderror" id="exampleInputName" placeholder="Status" name="status" value="{{old('status')}}">
                         @error('status') <span class="text-danger">{{$message}}</span> @enderror

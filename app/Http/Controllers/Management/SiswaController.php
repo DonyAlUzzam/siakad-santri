@@ -53,7 +53,9 @@ class SiswaController extends Controller
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'kelas' => 'required',
-            'tahun_ajaran' => 'required'
+            'tahun_ajaran' => 'required',
+            'wali_siswa' => 'required',
+            'no_hp' => 'required'
         ]);
         // $array = $request->only([
         //     'nim', 'fullname', 'email', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'kelas'
@@ -69,6 +71,8 @@ class SiswaController extends Controller
             "kelas" => $request->get('kelas'),
             "tahun_ajaran" => $request->get('tahun_ajaran'),
             "status" => $request->get('status'),
+            "wali_siswa" => $request->get('wali_siswa'),
+            "no_hp" => $request->get('no_hp'),
             // "image" => $request->image->hashName()
         ];
 
@@ -146,6 +150,8 @@ class SiswaController extends Controller
         $user->tanggal_lahir = $request->tanggal_lahir;
         $user->alamat = $request->alamat;
         $user->kelas = $request->kelas;
+        $user->wali_siswa = $request->wali_siswa;
+        $user->no_hp = $request->no_hp;
         $user->image = $user->image;
         $user->tahun_ajaran = $request->tahun_ajaran;
 

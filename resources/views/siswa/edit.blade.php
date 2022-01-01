@@ -64,6 +64,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="exampleInputName">Wali Siswa</label>
+                        <input type="text" class="form-control @error('wali_siswa') is-invalid @enderror" id="exampleInputName" placeholder="Wali Siswa" name="wali_siswa" value="{{$user->wali_siswa ?? old('wali_siswa')}}">
+                        @error('wali_siswa') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputName">No Hp</label>
+                        <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="exampleInputName" placeholder="No Hp" name="no_hp" value="{{$user->no_hp ?? old('no_hp')}}">
+                        @error('no_hp') <span class="text-danger">{{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label for="exampleInputName">Foto</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" id="exampleInputName" placeholder="Image" name="image" value="{{old('image')}}">
                         @error('image') <span class="text-danger">{{$message}}</span> @enderror

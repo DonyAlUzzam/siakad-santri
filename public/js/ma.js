@@ -97,6 +97,24 @@ function dataSiswa_init() {
 		}
 		},
         {
+            title : 'Wali Siswa',
+            data : 'wali_siswa',
+            width : '15%',
+            className : 'text-center align-middle',
+            render : (data, type, row) => {
+                return data;
+        }
+        },
+        {
+            title : 'No Hp',
+            data : 'no_hp',
+            width : '15%',
+            className : 'text-center align-middle',
+            render : (data, type, row) => {
+                return data;
+        }
+        },
+        {
             data: 'id',
             title: 'Opsi',
             className : 'text-center align-middle',

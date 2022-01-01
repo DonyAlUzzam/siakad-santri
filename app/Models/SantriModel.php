@@ -11,5 +11,5 @@ class SantriModel extends Model
 
     protected $table = 'santri';
     protected $primaryKey = 'id';
-    protected $fillable = ['image','nim', 'fullname','tahun_ajaran','status', 'tanggal_lahir', 'email', 'tempat_lahir', 'alamat', 'kelas'];
+    protected $fillable = ['image','nim', 'fullname','tahun_ajaran','status', 'tanggal_lahir', 'email', 'tempat_lahir', 'alamat', 'kelas', 'wali_siswa','no_hp'];
 }

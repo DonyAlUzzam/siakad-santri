@@ -58,7 +58,10 @@ class SantriController extends Controller
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'kelas' => 'required',
-            'tahun_ajaran'=> 'required'
+            'tahun_ajaran'=> 'required',
+            'wali_siswa'=> 'required',
+            'no_hp'=> 'required',
+            
         ]);
         // $array = $request->only([
         //     'image', 'nim', 'fullname', 'email', 'alamat', 'tempat_lahir', 'tanggal_lahir', 'kelas'
@@ -76,6 +79,8 @@ class SantriController extends Controller
             "kelas" => $request->get('kelas'),
             "tahun_ajaran" => $request->get('tahun_ajaran'),
             "status" => $request->get('status'),
+            "wali_siswa" => $request->get('wali_siswa'),
+            "no_hp" => $request->get('no_hp'),
             // "image" => $request->image->hashName()
         ];
 
@@ -157,6 +162,8 @@ class SantriController extends Controller
         $user->kelas = $request->kelas;
         $user->image = $user->image;
         $user->tahun_ajaran = $request->tahun_ajaran;
+        $user->wali_siswa = $request->wali_siswa;
+        $user->no_hp = $request->no_hp;
         // dd($user->image);
 
         if ($request->hasFile('image')) {
