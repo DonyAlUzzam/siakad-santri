@@ -14,7 +14,7 @@
               
                 <div class="card-body">
 
-                <img src="storage/Image/ponpes.jpg" width="100%"/>
+                <img src="ponpes.jpg" width="100%"/>
                 </div>
             </div>
         </div>
